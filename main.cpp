@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#include <string>
+
 #include "CharConversion.h"
 
 int main()
@@ -26,6 +29,12 @@ int main()
 	if(strcmp(charString, CharConversion::convert(CharConversion::convert(charString))))
 	{
 		printf("test3 failed\n");
+	}
+	
+	std::string stringString("hahahaha");
+	if(stringString.compare(CharConversion::convert(CharConversion::convert(stringString))))
+	{
+		printf("test4 failed\n");
 	}
 
 	return 0;

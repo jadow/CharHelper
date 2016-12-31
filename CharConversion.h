@@ -4,9 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifdef WIN32
 #include <Windows.h>
-#endif
 
 #include <locale>
 #include <codecvt>
@@ -17,7 +15,6 @@ class CharConversion {
 	
 private:
 	wchar_t * storedString;
-	static std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
 	void init();
 	
@@ -42,11 +39,13 @@ public:
 
 	static std::string convert(std::wstring str)
 	{
+		std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 		return converter.to_bytes(str);
 	}
 
 	static std::wstring convert(std::string str)
 	{
+		std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 		return converter.from_bytes(str);
 	}
 
